@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://hbrahvarrppl"]
+
+[node name="health" type="ColorRect"]
+custom_minimum_size = Vector2(30, 30)

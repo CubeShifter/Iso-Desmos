@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn3f3nqdjivw3"]
+
+[ext_resource type="PackedScene" uid="uid://6b8vrx5u05s2" path="res://Scenes/player.tscn" id="1_f1fha"]
+[ext_resource type="Shader" path="res://Scripts/game.gdshader" id="1_j8kix"]
+[ext_resource type="PackedScene" uid="uid://c83bwpiuo5p1a" path="res://Scenes/boss.tscn" id="2_ptad1"]
+[ext_resource type="Script" path="res://Scripts/bossed.gd" id="3_ci1jo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjpy6"]
+size = Vector2(320, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glicc"]
+size = Vector2(8, 180)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wdu18"]
+shader = ExtResource("1_j8kix")
+shader_parameter/enabled = false
+
+[node name="game" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_f1fha")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 86)
+collision_layer = 35
+collision_mask = 35
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -160.0
+offset_top = -4.0
+offset_right = 160.0
+offset_bottom = 4.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_yjpy6")
+
+[node name="Patrick" parent="." instance=ExtResource("2_ptad1")]
+position = Vector2(-104, 66)
+health = 300
+
+[node name="Jeffery" parent="." instance=ExtResource("2_ptad1")]
+position = Vector2(-208, 132)
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Bossed" type="Node2D" parent="."]
+script = ExtResource("3_ci1jo")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-164, 0)
+collision_layer = 35
+collision_mask = 35
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D2"]
+offset_left = -4.0
+offset_top = -90.0
+offset_right = 4.0
+offset_bottom = 90.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_glicc")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(164, 0)
+collision_layer = 35
+collision_mask = 35
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D3"]
+offset_left = -4.0
+offset_top = -90.0
+offset_right = 4.0
+offset_bottom = 90.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("RectangleShape2D_glicc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 100
+material = SubResource("ShaderMaterial_wdu18")
+offset_right = 640.0
+offset_bottom = 360.0

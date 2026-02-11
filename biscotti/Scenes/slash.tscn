@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2ketmgwr63k7"]
+
+[ext_resource type="Script" path="res://Scripts/slash.gd" id="1_nulo4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jl21f"]
+size = Vector2(8, 1000)
+
+[node name="Slash" type="Area2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_nulo4")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, -500, 0, 500)
+closed = true
+width = 8.0
+default_color = Color(0.101961, 0.101961, 0.141176, 1)
+texture_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jl21f")
+disabled = true
