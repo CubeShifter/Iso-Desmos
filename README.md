@@ -1,2 +1,2 @@
 # Iso-Desmos
-I had to make a Repository for my Flavortown project, even though I am making it inside of a graphing calculator. There are no files here, so don't bother looking.
+This is a Cool Lil Desmos Graph I made that lets you make Voxel Art in an Isometric plane. You can change the hue of the pixel youy place in the bottom right corner, and you can press the square next to it to switch between drawing and erasing. You can edit the code and play around with the graph in the [demo](https://www.desmos.com/calculator/bxwelr9szs), but you can also load it by going to a blank desmos page, and type this in Calc.setState(JSON.parse(PASTEINGRAPH.JSON)) and paste in graph.json where it says PASTEINGRAPH.JSON. Thanks for testing this project out!
